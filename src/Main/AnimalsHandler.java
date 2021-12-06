@@ -35,31 +35,40 @@ public class AnimalsHandler {
         System.out.println(hadAte ? "Я буду есть..." : "Я не буду есть..");
     }
 
-    public int task2() throws Exception {
+    public ArrayList<Animal> countOfAnimals() throws Exception {
         var animals = createAnimals();
-        int sumSquare = 0;
         for (Animal animal : animals) {
             animal.setProp();
             switch (animal.getClass().getSimpleName()) {
-                case "Raccoon" -> sumSquare += 4 * animal.area;
-                case "Lynx" -> sumSquare += 5 * animal.area;
-                case "Kangaroo" -> sumSquare += 2 * animal.area;
-                case "Eagle", "Ram" -> sumSquare += 7 * animal.area;
-                case "Ostrich" -> sumSquare += 3 * animal.area;
-                case "Carp" -> sumSquare += 15 * animal.area;
+                case "Raccoon" -> animal.count = 4;
+                case "Lynx" -> animal.count = 5;
+                case "Kangaroo" -> animal.count = 2;
+                case "Eagle", "Ram" -> animal.count = 7;
+                case "Ostrich" -> animal.count = 3;
+                case "Carp" -> animal.count = 15;
                 default -> throw new Exception("Invalid animal");
             }
+        }
+        return animals;
+    }
+
+    public int task2() throws Exception {
+        var animals = countOfAnimals();
+        int sumSquare = 0;
+        for (Animal animal : animals) {
+            animal.setProp();
+            sumSquare += animal.count * animal.area;
         }
         return sumSquare;
     }
 
-    public int taskOptional(String zone) {
-        var animals = createAnimals();
+    public int taskOptional(String zone) throws Exception {
+        var animals = countOfAnimals();
         int weightCar = 0;
         for (Animal animal : animals) {
             animal.setProp();
             if (animal.zone.equals(zone))
-                weightCar += animal.maxWeight;
+                weightCar += animal.count * animal.maxWeight;
         }
         return weightCar;
     }

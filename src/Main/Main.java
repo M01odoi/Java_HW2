@@ -15,9 +15,14 @@ public class Main {
         }
         System.out.println("*************** Task optional ***************");
 
-        System.out.println("Min car carrying capacity for ground animals " + handler.taskOptional("ground") + " kg.");
-        System.out.println("Min car carrying capacity for water animals " + handler.taskOptional("water") + " kg.");
-        System.out.println("Min car carrying capacity for air animals " + handler.taskOptional("air") + " kg.");
+        try {
+            System.out.println("Min car carrying capacity for ground animals " + handler.taskOptional("ground") + " kg.");
+
+            System.out.println("Min car carrying capacity for water animals " + handler.taskOptional("water") + " kg.");
+            System.out.println("Min car carrying capacity for air animals " + handler.taskOptional("air") + " kg.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
 

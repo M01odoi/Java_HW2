@@ -8,7 +8,7 @@ public abstract class Animal {
 
     private final String name;
     private final String birthday;
-
+    public int count = 1;
     public String zone;
     public String typeFood;
     public int maxWeight;
